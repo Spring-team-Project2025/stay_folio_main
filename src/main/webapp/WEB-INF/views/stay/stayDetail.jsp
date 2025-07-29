@@ -65,7 +65,7 @@
 						</div>
 						<div class="carousel-slide">
 							<img
-								src="${pageContext.request.contextPath}/resources/img/stay/stayDetail3.png
+								src="${pageContext.request.contextPath}/resources/img/stay/stayDetail3.png"
 								alt="숙소 이미지 3" />
 						</div>
 						<div class="carousel-slide">
