@@ -42,6 +42,14 @@ function wishEvent() {
         console.error("요청 중 오류 발생:", err);
         alert("찜 처리 중 오류가 발생했습니다.");
       });
+
+      function openModal() {
+    		document.getElementById("commonModal").style.display = "flex";
+    	}
+
+    	function closeModal() {
+    		document.getElementById("commonModal").style.display = "none";
+    	}
   });
 
   // 숙소 카드 클릭 이벤트

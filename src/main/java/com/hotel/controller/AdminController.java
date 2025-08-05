@@ -87,14 +87,20 @@ public class AdminController {
 		return stayService.getRoomsByStayId(siId);
 	}
 
+	// 관리자 회원 리스트
 	@GetMapping("/member/list")
 	public String memberList(Criteria cri, Model model) {
-	    List<MemberVO> memberList = adminService.getMemberList(cri);
-	    int total = adminService.getTotalMemberCount(cri); // 총 회원 수
-
+		// 페이지당 보여주는 회원의 수 (cri) 만큼의 회원 정보를 가져옴
+		List<MemberVO> memberList = adminService.getMemberList(cri);
+	    // 총 회원의 수
+	    int total = adminService.getTotalMemberCount(cri); 
+	    // 전달할 데이터 모델에 저장
 	    model.addAttribute("memberList", memberList);
+	    // 페이징 정보 저장 (cri - 현재 페이지, total - 총 회원 수)
 	    model.addAttribute("pageMaker", new PageDTO(cri, total));
+	    // 페이지네이션을 위해 cri 모델에 저장
 	    model.addAttribute("cri", cri); 
+	    // view return
 	    return "admin/member/memberList";
 	}
 
