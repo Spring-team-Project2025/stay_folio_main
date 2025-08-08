@@ -145,4 +145,24 @@
 		ROWS ONLY
 	</select>
 
+	<!-- 전체 예약 수 -->
+	<select id="getTotalReservationCount" resultType="int">
+		SELECT COUNT(*) FROM t_stay_reservation
+		<if test="type != null and keyword != null">
+			<trim prefix="where" prefixOverrides="OR">
+				<foreach item="item" collection="typeArr">
+					<if test="item == 'T'.toString()">
+						OR sr_id LIKE '%' || #{keyword} || '%'
+					</if>
+					<if test="item == 'C'.toString()">
+						OR si_name LIKE '%' || #{keyword} || '%'
+					</if>
+					<if test="item == 'W'.toString()">
+						OR mi_id LIKE '%' || #{keyword} || '%'
+					</if>
+				</foreach>
+			</trim>
+		</if>
+	</select>
+
 </mapper>

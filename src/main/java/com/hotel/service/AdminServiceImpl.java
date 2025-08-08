@@ -10,6 +10,7 @@ import com.hotel.domain.Criteria;
 import com.hotel.domain.LocationCategoryVO;
 import com.hotel.domain.MemberVO;
 import com.hotel.domain.RecommendCategoryVO;
+import com.hotel.domain.ReservationDetailVO;
 import com.hotel.domain.ReservationStatsDTO;
 import com.hotel.domain.StayVO;
 import com.hotel.mapper.AdminMapper;
@@ -71,4 +72,13 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.getTopBookmarkedStays();
 	}
 	
+	@Override
+	public int getTotalReservationCount(Criteria cri) {
+		return adminMapper.getTotalReservationCount(cri);
+	}
+	
+	@Override
+	public List<ReservationDetailVO> getReservationList(Criteria cri) {
+		return adminMapper.getReservationList(cri);
+	}
 }

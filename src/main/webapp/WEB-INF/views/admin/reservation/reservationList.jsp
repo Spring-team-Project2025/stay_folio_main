@@ -8,7 +8,7 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>숙소관리 - Stay Folio Admin</title>
+    <title>예약관리 - Stay Folio Admin</title>
 
     <!-- CSS -->
     <link
@@ -17,17 +17,17 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     />
     <link
       rel="stylesheet"
-      href="${pageContext.request.contextPath}/resources/css/admin/member/memberList.css"
+      href="${pageContext.request.contextPath}/resources/css/admin/reservation/adminReservation.css"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
 
-    <!-- jQuery --> 
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Custom JS -->
-    <script src="${pageContext.request.contextPath}/resources/js/admin/room/roomList.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/admin/reservation/reservationList.js"></script>
   </head>
   <body>
     <div class="admin-container">
@@ -42,9 +42,7 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <nav class="admin-nav">
           <ul>
             <li><a href="/admin/dashboard" class="nav-item">대시보드</a></li>
-            <li>
-              <a href="/admin/reservationList" class="nav-item">예약관리</a>
-            </li>
+            <li><a href="/admin/reservation" class="nav-item">예약관리</a></li>
             <li>
               <a href="/admin/stay/staylist" class="nav-item">숙소관리</a>
             </li>
@@ -62,8 +60,8 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
         <div class="admin-header">
           <div class="header-content">
             <div class="header-left">
-              <h2 class="page-title">회원관리</h2>
-              <p class="page-subtitle">회원의 정보를 관리하는 페이지입니다.</p>
+              <h2 class="page-title">예약관리</h2>
+              <p class="page-subtitle">예약 정보를 관리하는 페이지입니다.</p>
             </div>
           </div>
         </div>
@@ -75,9 +73,14 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
               type="text"
               id="member-search"
               class="search-input"
-              placeholder="회원 이름으로 검색..."
+              placeholder="회원 이름, 숙소이름으로 검색..."
             />
             <button class="search-btn" id="search-btn">검색</button>
+          </div>
+
+          <div class="filter-container">
+            <select id="region-filter" class="region-filter"></select>
+            <button class="reset-btn" id="reset-btn">초기화</button>
           </div>
         </div>
 
@@ -88,17 +91,17 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
               <thead>
                 <tr>
                   <th>번호</th>
-                  <th>회원 이름</th>
+                  <th>숙소명</th>
+                  <th>예약자 이름</th>
                   <th>이메일</th>
-                  <th>가입일자</th>
-                  <th>광고수신여부</th>
-                  <th>유효회원여부</th>
+                  <th>예약일자</th>
+                  <th>예약상태</th>
                 </tr>
               </thead>
               <tbody>
                 <c:forEach
-                  var="member"
-                  items="${memberList}"
+                  var="reservation"
+                  items="${reservationList}"
                   varStatus="status"
                 >
                   <tr>
@@ -106,16 +109,16 @@ prefix="c" %> <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                       ${pageMaker.total - (pageMaker.cri.page - 1) *
                       pageMaker.cri.perPageNum - status.index}
                     </td>
-                    <td>${member.miName}</td>
-                    <td>${member.miId}</td>
+                    <td>${reservation.reservationStayName}</td>
+                    <td>${reservation.reservationName}</td>
+                    <td>${reservation.reservationEmail}</td>
                     <td>
                       <fmt:formatDate
-                        value="${member.miDate}"
+                        value="${reservation.reservationDate}"
                         pattern="yyyy-MM-dd"
                       />
                     </td>
-                    <td>${member.miIsad}</td>
-                    <td>${member.miEnabled}</td>
+                    <td>${reservation.reservationStatus}</td>
                   </tr>
                 </c:forEach>
               </tbody>

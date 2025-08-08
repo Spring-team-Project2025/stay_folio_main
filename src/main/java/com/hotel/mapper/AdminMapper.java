@@ -7,6 +7,7 @@ import com.hotel.domain.Criteria;
 import com.hotel.domain.LocationCategoryVO;
 import com.hotel.domain.MemberVO;
 import com.hotel.domain.RecommendCategoryVO;
+import com.hotel.domain.ReservationDetailVO;
 import com.hotel.domain.ReservationStatsDTO;
 import com.hotel.domain.StayVO;
 
@@ -32,5 +33,8 @@ public interface AdminMapper {
 	
 	List<StayVO> getTopBookmarkedStays();
 	
+	int getTotalReservationCount(Criteria cri);
+	
+	List<ReservationDetailVO> getReservationList(Criteria cri);
 }
 

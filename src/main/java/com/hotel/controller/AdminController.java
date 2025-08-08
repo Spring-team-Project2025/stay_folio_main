@@ -17,6 +17,7 @@ import com.hotel.domain.Criteria;
 import com.hotel.domain.FacilityVO;
 import com.hotel.domain.MemberVO;
 import com.hotel.domain.PageDTO;
+import com.hotel.domain.ReservationDetailVO;
 import com.hotel.domain.RoomVO;
 import com.hotel.domain.StayDetailVO;
 import com.hotel.domain.StayVO;
@@ -115,4 +116,14 @@ public class AdminController {
 		return "admin/member/memberList";
 	}
 
+	@GetMapping("/reservation/list")
+	public String reservationList(Criteria cri, Model model) {
+		List<ReservationDetailVO> reservationList = adminService.getReservationList(cri);
+		int total = adminService.getTotalReservationCount(cri); // 총 예약 수
+
+		model.addAttribute("reservationList", reservationList);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		model.addAttribute("cri", cri);
+		return "admin/reservation/reservationList";
+	}
 }
