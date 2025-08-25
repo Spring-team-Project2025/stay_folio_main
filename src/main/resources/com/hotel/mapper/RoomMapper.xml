@@ -226,18 +226,19 @@
 	
 	<select id="getReservedDates" resultType="java.sql.Date">
 		<![CDATA[
-			WITH reserved_dates AS (
-				SELECT 
-					sr_checkin + LEVEL - 1 AS reserved_date 
-				FROM t_stay_reservation
-				WHERE si_id = #{siId} AND ri_id = #{riId} AND sr_status = 'a' 
-					CONNECT BY LEVEL <= sr_checkout - sr_checkin 
-					AND PRIOR sr_id = sr_id 
-					AND PRIOR DBMS_RANDOM.VALUE IS NOT NULL
+			WITH nums AS (
+			    SELECT LEVEL - 1 AS n
+			    FROM dual
+			    CONNECT BY LEVEL <= 366
 			)
-			SELECT reserved_date
-			FROM reserved_dates
-			WHERE reserved_date > TRUNC(SYSDATE)
+			SELECT r.sr_checkin + nums.n AS reserved_date
+			FROM t_stay_reservation r,
+			     nums
+			WHERE r.sr_status = 'a'
+			  AND r.sr_checkout > TRUNC(SYSDATE)
+			  AND r.si_id = #{siId}
+			  AND r.ri_id = #{riId}
+			  AND nums.n < (r.sr_checkout - r.sr_checkin)
 			ORDER BY reserved_date
 		]]>
 	</select>

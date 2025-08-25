@@ -420,9 +420,9 @@ $(document).ready(function () {
     }
 
     tempStartDate = startDate ? new Date(startDate) : null;
-    tempEndDate = endDAte ? new Date(endDate) : null;
+    tempEndDate = endDate ? new Date(endDate) : null;
     $("#dateError").hide();
-    $("#dateApply").prop("disabled", !(tempStartDAte && tempEndDAte)).css("opacity", (tempStartDate && tempEndDAte) ? 1 : 0.5);
+    $("#dateApply").prop("disabled", !(tempStartDate && tempEndDate)).css("opacity", (tempStartDate && tempEndDAte) ? 1 : 0.5);
 
     // 월 네비게이션 버튼 이벤트 재설정 (fallback)
     setTimeout(() => {
@@ -682,6 +682,8 @@ $(document).ready(function () {
     .then((data) => {
       const rawUnavailable = data.unavailableCheckin || [];
       checkoutOnly = data.checkoutOnly || [];
+      console.log(rawUnavailable);
+      console.log(checkoutOnly);
        // disable에는 '체크인 불가'만 넣는다 (checkoutOnly는 제외)
       unavailableCheckin = rawUnavailable.filter(d => !checkoutOnly.includes(d));
 
