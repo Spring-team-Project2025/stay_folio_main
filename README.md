@@ -1,4 +1,14 @@
 
+##  디자인 & 구조 자료
+
+| 항목 | 링크 |
+|------|------|
+| 🗄 DB 구조 & UML 다이어그램 | [StayFolio Documentation](https://spring-team-project2025.github.io/stay_folio_documents/) |
+|  정보 구조 (IA) | [Google Sheet: 정보 구조도](https://docs.google.com/spreadsheets/d/1OQmVgNTZ_Yc10W1KOM3R84FSjb7fj2WZQVZQrMFWXYk/edit?pli=1&gid=0#gid=0) |
+|  UI/UX 설계 및 오류검출 (Figma) | [Figma 디자인 파일](https://www.figma.com/design/FYYxvzwGzkNBLJrTOa5ROW/Stay-folio?node-id=0-1&p=f&t=ncAk8rEV2aezrp3R-0#-1) |
+
+---
+
 <img width="1280" height="720" alt="슬라이드1" src="https://github.com/user-attachments/assets/b951c5d6-dfa7-4a2c-840f-069e02060ee5" /> |
 <img width="1280" height="720" alt="슬라이드2" src="https://github.com/user-attachments/assets/7b5be27f-f26e-49c5-8ca8-53543ce8e17c" /> |
 <img width="1280" height="720" alt="슬라이드3" src="https://github.com/user-attachments/assets/0fcbefce-1644-4bad-bc1d-989493c14de9" /> |
