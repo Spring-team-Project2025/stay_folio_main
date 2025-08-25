@@ -1,4 +1,4 @@
-
+---|---|
 <img width="1280" height="720" alt="슬라이드1" src="https://github.com/user-attachments/assets/b951c5d6-dfa7-4a2c-840f-069e02060ee5" /> |
 <img width="1280" height="720" alt="슬라이드2" src="https://github.com/user-attachments/assets/7b5be27f-f26e-49c5-8ca8-53543ce8e17c" /> |
 <img width="1280" height="720" alt="슬라이드3" src="https://github.com/user-attachments/assets/0fcbefce-1644-4bad-bc1d-989493c14de9" /> |
